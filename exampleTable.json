@@ -1,31 +1,29 @@
 {
-  "org": {
-    "name": "upholder",
-    "members": {
-      "memberObject": {
-        "memberName": "user",
-        "gender": "string",
-        "birthday": "date",
-        "joinedAt": 1534187794,
-        "social": {
-          "facebook": "blah",
-          "twitter": "blah",
-          "phone": "5",
-          "email": "blah" 
-        }
+  "name": "upholder",
+  "members": {
+    "memberObject": {
+      "memberName": "user",
+      "gender": "string",
+      "birthday": "date",
+      "joinedAt": 1534187794,
+      "social": {
+        "facebook": "blah",
+        "twitter": "blah",
+        "phone": "5",
+        "email": "blah" 
       }
-    },
-    "events": {
-      "eventOne": {
-        "eventName": "example",
-        "eventDescription": "a test event",
-        "location": "Chicago",
-        "startTime": 1534187794,
-        "recurring": false,
-        "attendingMembers": {
-          "total": 1,
-          "members": {}
-        }
+    }
+  },
+  "events": {
+    "eventOne": {
+      "eventName": "example",
+      "eventDescription": "a test event",
+      "location": "Chicago",
+      "startTime": 1534187794,
+      "recurring": {},
+       "attendingMembers": {
+        "total": 1,
+        "members": {}
       }
     }
   }
