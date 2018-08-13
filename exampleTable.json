@@ -9,6 +9,7 @@
         "social": {
           "facebook": "blah",
           "twitter": "blah",
+          "phone": "5",
           "email": "blah" 
         }
       }
@@ -19,6 +20,7 @@
         "eventDescription": "a test event",
         "location": "Chicago",
         "start time": 1534187794,
+        "recurring": false,
         "attendingMembers": {
           "total": 1,
           "members": {}
