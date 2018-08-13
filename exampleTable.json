@@ -1,0 +1,29 @@
+{
+  "org": {
+    "name": "upholder",
+    "members": {
+      "memberObject": {
+        "memberName": "user",
+        "gender": "string",
+        "birthday": "date",
+        "social": {
+          "facebook": "blah",
+          "twitter": "blah",
+          "email": "blah" 
+        }
+      }
+    },
+    "events": {
+      "eventOne": {
+        "eventName": "example",
+        "eventDescription": "a test event",
+        "location": "Chicago",
+        "start time": 1534187794,
+        "attendingMembers": {
+          "total": 1,
+          "members": {}
+        }
+      }
+    }
+  }
+}
