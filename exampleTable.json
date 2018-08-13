@@ -6,6 +6,7 @@
         "memberName": "user",
         "gender": "string",
         "birthday": "date",
+        "joinedAt": 1534187794,
         "social": {
           "facebook": "blah",
           "twitter": "blah",
