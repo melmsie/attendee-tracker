@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const db = require('../utils/dbFunctions.js')
 
 app.set('port', 8000)
 
@@ -23,6 +24,12 @@ app.get('/login', (req, res) => {
     res.render('login.ejs', { testNumber: 1 })
   })
 
+  async function dbf() {
+    await db.createOrg()
+    let data = await db.getOrg('upholder')
+    console.log(data)
+  }
 app.listen(app.get('port'), function () {
+  dbf()
   console.log('The server is running on http://localhost:' + app.get('port'))
 })
