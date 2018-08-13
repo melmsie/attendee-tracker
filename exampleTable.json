@@ -19,7 +19,7 @@
         "eventName": "example",
         "eventDescription": "a test event",
         "location": "Chicago",
-        "start time": 1534187794,
+        "startTime": 1534187794,
         "recurring": false,
         "attendingMembers": {
           "total": 1,
