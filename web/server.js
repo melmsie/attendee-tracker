@@ -4,9 +4,24 @@ const app = express()
 
 app.set('port', 8000)
 
-// const config = require('../config.json')
+app.set('views', `${__dirname}/pages`)
+app.set('view engine', 'ejs')
 
-app.use(express.static(path.join(__dirname, '../web')))
+// Load the rest of the local files
+app.use('/data', express.static(`${__dirname}/data`))
+app.use('/dist', express.static(`${__dirname}/dist`))
+app.use('/js', express.static(`${__dirname}/js`))
+app.use('/less', express.static(`${__dirname}/less`))
+app.use('/vendor', express.static(`${__dirname}/vendor`))
+
+// TODO: Write a seperate file with an app.get for each route
+app.get('/', (req, res) => {
+  res.render('index.ejs', { testNumber: 1 })
+})
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs', { testNumber: 1 })
+  })
 
 app.listen(app.get('port'), function () {
   console.log('The server is running on http://localhost:' + app.get('port'))
