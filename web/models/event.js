@@ -1,34 +1,15 @@
-/// Model def for member
-
-/* 
-
-
-"members": {
-          "memberObject": {
-            "memberName": "user",
-            "gender": "string",
-            "birthday": "date",
-            "joinedAt": 1534187794,
-            "social": {
-              "facebook": "blah",
-              "twitter": "blah",
-              "phone": "5",
-              "email": "blah" 
-            }
-          }
-        },
-
-
-        */
-
-
-
+const r = require('rethinkdbdash')()
 module.exports = {
-  detele (name) {
-    
+  async delete (orgName, eventName) {
+    let org = await r.table('orgs').filter(r.row('name').eq(orgName))
+    let array = org[0].events.find(arr => arr.name === eventName)
+    org[0].events.splice(org[0].events.indexOf(array), 1)
+    return r.table('orgs').insert(org, {conflict: 'update'}).run()
   },
-  create () {
-    
+  async create (orgName, event) {
+    let org = await r.table('orgs').filter(r.row('name').eq(orgName))
+    org[0].events.push(event)
+    return r.table('orgs').insert(org, {conflict: 'update'}).run()
   },
   update () {
 

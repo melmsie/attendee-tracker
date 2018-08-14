@@ -1,4 +1,4 @@
-const Member = require("../models/member");
+const Member = require("../models/member.js");
 
 module.exports = {
 
@@ -6,15 +6,12 @@ module.exports = {
     
   }, 
   view (req, res, next) {
-    Member.find(req.param("id")).exec((err, member) => {
+    
 
         res.render("viewname", {
-            member: member, 
-            whatever: {
-                extra: "yay"
-            }
+            member: member
         })
-    });
+
   },
   listForEvent (req, res, next) {
     
