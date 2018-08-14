@@ -22,7 +22,6 @@
         */
 
 
-const r = require('rethinkdbdash')()
 
 module.exports = {
   detele (name) {

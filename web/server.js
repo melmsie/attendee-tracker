@@ -26,16 +26,14 @@ const MembersController = require("./controllers/members");
 app.get("/members/view/:id", MembersController.view);
 
 
-app.get('/login', (req, res) => {
-    res.render('login.ejs', { testNumber: 1 })
-  })
+app.get('/data', (req, res) => {
+  res.render('tables.ejs', { testNumber: 1 })
+})
 
-  async function dbf() {
-    await db.createOrg()
-    let data = await db.getOrg('upholder')
-    console.log(data)
-  }
+app.get('/forms', (req, res) => {
+  res.render('forms.ejs', { testNumber: 1 })
+})
+
 app.listen(app.get('port'), function () {
-  dbf()
   console.log('The server is running on http://localhost:' + app.get('port'))
 })
