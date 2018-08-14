@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const db = require('../utils/dbFunctions.js')
 
+
 app.set('port', 8000)
 
 app.set('views', `${__dirname}/pages`)
@@ -19,6 +20,11 @@ app.use('/vendor', express.static(`${__dirname}/vendor`))
 app.get('/', (req, res) => {
   res.render('index.ejs', { testNumber: 1 })
 })
+
+const MembersController = require("./controllers/members");
+
+app.get("/members/view/:id", MembersController.view);
+
 
 app.get('/login', (req, res) => {
     res.render('login.ejs', { testNumber: 1 })
