@@ -4,6 +4,7 @@
   "description": "A user-friendly interface for groups to track children/parents signup info and attendance during events",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "rethinkdbdash": "^2.3.31"
