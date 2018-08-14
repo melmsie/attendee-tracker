@@ -24,13 +24,12 @@ const memberController = require("./controllers/members")
 
 // temporary for testing
 const eventModel = require("./models/event.js")
-app.get('/api/event/create', async (req, res) => {
-  let random = Math.random().toString(36).substring(2,5)
+app.post('/api/event/create', async (req, res) => {
   let event = {
-    "name": `${random} event`,
-    "description": "an example event description",
-    "start": Date.now(),
-    "location": "Chicago",
+    "name": req.body.eventName,
+    "description": req.body.eventDescription,
+    "start": Date.now(), // date choosing functionality to come later
+    "location": req.body.eventLocation, // Should verify locations later
     "recurring": {},
     "members": [],
   }
@@ -38,21 +37,24 @@ app.get('/api/event/create', async (req, res) => {
   res.redirect('/')
 })
 app.post('/api/event/delete', async (req, res) => {
-  console.log(req.body)
   await eventModel.delete('upholder', req.body.eventName)
   res.redirect('/')
 })
-
-app.get("/", orgController.view)
-
-
-app.get('/data', (req, res) => {
-  res.render('tables.ejs', { testNumber: 1 })
+app.post('/api/event/checkin', async (req, res) => {
+  let member = {
+    "name": req.body.name,
+    "age": req.body.age,
+    "email": req.body.email,
+    "gender": req.body.gender,
+    "birthdate": req.body.birthday,
+    "start": Date.now()
+  }
+  await eventModel.checkin('upholder', req.body.eventChoice, member)
+  res.redirect('/')
 })
 
-app.get('/forms', (req, res) => {
-  res.render('forms.ejs', { testNumber: 1 })
-})
+app.get("/", orgController.viewMain)
+app.get("/data", orgController.viewData)
 
 app.listen(app.get('port'), function () {
   console.log('The server is running on http://localhost:' + app.get('port'))

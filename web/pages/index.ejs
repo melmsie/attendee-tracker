@@ -93,9 +93,6 @@
                         <li>
                             <a href="/data"><i class="fa fa-table fa-fw"></i> Data</a>
                         </li>
-                        <li>
-                            <a href="/forms"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -175,22 +172,41 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-8">
+                    <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bell fa-fw"></i> Check In to event
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                            <form method="POST" action="/api/event/checkin">
+                                                <label>Choose the event</label>
+
+                                                <% for (const event of org[0].events) { %>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="eventChoice" id="optionsRadios1" value="<%= event.name %>" checked><%= event.name %>
+                                                        </label>
+                                                    </div>
+                                                  <% } %>
+                                                <input class="form-control" name="name" placeholder="Name">
+                                                <input class="form-control" name="age" placeholder="Age">
+                                                <input class="form-control" name="email" placeholder="Email">
+                                                <input class="form-control" name="gender" placeholder="Gender">
+                                                <input class="form-control" name="birthday" placeholder="Birthday">
+                                                <button type="submit" class="btn btn-success btn-block">Check In</button>
+                                            </form>
+            
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+        
+                        </div>
+                
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Chart that does nothing yet
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Your Events
+                            <i class="fa fa-bell fa-fw"></i> Org Events
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -198,18 +214,15 @@
                                     <% for (const event of org[0].events) { %>
                                         <a href="#" class="list-group-item">
                                                 <%= event.name %>
-                                                <span class="pull-right text-muted small"><em>start date</em>
+                                                <span class="pull-right text-muted small"><em><%= event.start %></em>
                                                 </span>
                                             </a>
                                       <% } %>
                             </div>
                             <!-- /.list-group -->
                             <div class="">
-                                <a href="/api/event/create" class="btn btn-success btn-block">Create random event</a>
-                            </div>
-                            <div class="">
                                     <form method="POST" action="/api/event/delete">
-                                        <input class="form-control" name="eventName">
+                                        <input class="form-control" name="eventName" placeholder="Event name">
                                         <button type="submit" class="btn btn-danger btn-block">Remove Event</button>
                                     </form>
                             </div>
@@ -220,6 +233,37 @@
 
                 </div>
                 <!-- /.col-lg-8 -->
+
+                <div class="col-lg-6">
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                        <i class="fa fa-bell fa-fw"></i> New Event
+                                    </div>
+                                <div class="panel-body">
+                                        <form method="POST" action="/api/event/create">
+                                            <input class="form-control" name="eventName" style="padding: 10px" placeholder="Event Name">
+                                            <input class="form-control" name="eventDescription" style="height: 75px; padding: 10px" placeholder="Event Description">
+                                            <input class="form-control" name="eventLocation" style="padding: 10px" placeholder="Event Location">
+                                            <button type="submit" class="btn btn-success btn-block">Submit Event</button>
+                                        </form>
+                
+                                    </div>
+                        </div>
+                        <!-- 
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                        <i class="fa fa-bell fa-fw"></i> New Member
+                                    </div>
+                                <div class="panel-body">
+                                        <form method="POST" action="/api/member/create">
+                                            <input class="form-control" name="eventName" style="padding: 10px" placeholder="Event Name">
+                                            <input class="form-control" name="eventDescription" style="height: 75px; padding: 10px" placeholder="Event Description">
+                                            <input class="form-control" name="eventLocation" style="padding: 10px" placeholder="Event Location">
+                                            <button type="submit" class="btn btn-success btn-block">Submit Member</button>
+                                        </form>
+                                </div>
+                        </div> -->
+                </div>
             </div>
             <!-- /.row -->
         </div>

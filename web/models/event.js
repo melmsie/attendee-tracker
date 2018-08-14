@@ -11,11 +11,15 @@ module.exports = {
     org[0].events.push(event)
     return r.table('orgs').insert(org, {conflict: 'update'}).run()
   },
-  update () {
-
-  },
-  list () {
-
+  async checkin (orgName, eventName, member) {
+    let org = await r.table('orgs').filter(r.row('name').eq(orgName))
+    let event = org[0].events.find(arr => arr.name === eventName)
+    event.members.push(member)
+    let array = org[0].members.find(arr => arr.name === member.name)
+    if (!array) {
+      org[0].members.push(member)
+    }
+    return r.table('orgs').insert(org, {conflict: 'update'}).run()
   }
 }
 
